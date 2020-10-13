@@ -1,9 +1,11 @@
-var gulp = require('gulp');
-var stylus = require('gulp-stylus');
-var pug = require('gulp-pug');
-var rename = require('gulp-rename');
-var plumber = require('gulp-plumber');
-var browserSync = require('browser-sync');
+const gulp = require('gulp');
+const stylus = require('gulp-stylus');
+const pug = require('gulp-pug');
+const rename = require('gulp-rename');
+const plumber = require('gulp-plumber');
+const browserSync = require('browser-sync');
+const postcss = require("gulp-postcss");
+const autoprefixer = require("autoprefixer");
 
 gulp.task('stylus', function() {
   var option = {
@@ -11,10 +13,17 @@ gulp.task('stylus', function() {
   };
 
   return gulp.src('./stylus/**/*.stylus')
-  .pipe(plumber())
-  .pipe(stylus(option))
-  .pipe(gulp.dest('./'))
-  .pipe(browserSync.stream());
+    .pipe(plumber())
+    .pipe(stylus(option)).pipe(postcss([
+      autoprefixer({
+        // ☆IEは11以上、Androidは4.4以上
+        // その他は最新2バージョンで必要なベンダープレフィックスを付与する設定
+        browsers: ["last 2 versions", "ie >= 11", "Android >= 4"],
+        cascade: false
+      })
+    ]))
+    .pipe(gulp.dest('./'))
+    .pipe(browserSync.stream());
 });
 
 gulp.task('pug', function() {
