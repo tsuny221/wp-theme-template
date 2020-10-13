@@ -1,0 +1,15 @@
+@charset "utf-8";
+/*
+theme Name: portfolio_template
+version： 1.0.0
+*/
+h1{
+  color: yellow;
+
+  &:hover{
+    color: blue;
+    }
+}
+p{
+  color: red
+}
