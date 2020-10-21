@@ -1,0 +1,71 @@
+/******************************************************************
+
+Stylesheet: ベーススタイル
+
+******************************************************************/
+
+body {
+  margin: 0
+  font-family: 'Quasimoda', 'ヒラギノ角ゴ ProN W3','sans-serif'
+  color: #333
+}
+h1{
+  margin: 0
+}
+a{
+  text-decoration: none
+  color: #333
+  margin: 0
+}
+
+p{
+  margin: 0
+}
+img {
+  max-width: 100%
+  vertical-align: bottom
+}
+.font-sm {
+  font-size: 14px
+}
+.font-md {
+  font-size: 17px
+}
+.font-lr {
+  font-size: 20px
+}
+.font-lg {
+  font-size: 70px
+}
+.mb-sm {
+  margin-bottom: 16px !important
+}
+.mb-lg {
+  margin-bottom: 80px !important
+}
+.pb-sm {
+  padding-bottom: 16px !important
+}
+.pb-lg {
+  padding-bottom: 80px !important
+}
+.content-width {
+  width: 90%
+  margin: 0 auto
+  max-width: $contentMaxWidth
+}
+.main-title {
+  @extend .font-lg
+  //このように継承しておくとmediaクエリが適用できる
+  font-weight: 600
+  margin-bottom: 0
+  display: block
+}
+.sub-title {
+  @extend .font-sm
+}
+//他のサイズでも使うので切り出しておく
+.flex {
+  display: flex
+  flex-direction: column
+}
